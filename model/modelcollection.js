@@ -29,8 +29,15 @@ const users=new mongoose.model("users",{
     opticket:[],
     conformop:[]
 })
+
+const countatus=new mongoose.model('countatus',{
+    email:String,
+    phoneNumber:String,
+    seduction:String,
+})
 module.exports={
     admins,
     doctors,
-    users
+    users,
+    countatus
 }

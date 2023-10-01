@@ -32,6 +32,28 @@ const adminLogin=(req,res)=>{
         }
     })
 }
+const countatusAdmin=(req,res)=>{
+    const {email,phoneNumber,seduction}=req.body
+    models.countatus.create({email,phoneNumber,seduction}).then((result, error) => {
+        if (result !== null && result !== "") {
+          res.send(result);
+        } else {
+          res.send("Insert error!" + error);
+        }
+    });
+}
+
+const enquirylist=(req,res)=>{
+    models.countatus.find().then(Responce=>{
+        if(Responce){
+            res.json(Responce)
+        }
+        else{
+            res.json("empty data")
+        }
+    })
+}
+// *********** doctor ********************************
 const doctorRigistration=(req,res)=>{
     const {dr_image,dr_name,email,psw,department,degree,description}=req.body
 
@@ -121,7 +143,7 @@ const deleteDoctorProfile=(req,res)=>{
 
 const userRegistration=(req,res)=>{
     const {uname,email,age,gender,psw}=req.body
-    models.users.findOne({uname}).then(user=>{
+    models.users.findOne({email}).then(user=>{
         if(user){
             res.status(200).json(uname)
         }
@@ -360,5 +382,7 @@ module.exports={
     doctorprofileapi,
     doctorTimeupdateapi,
     OpbooksApi,
-    allAppointment
+    allAppointment,
+    countatusAdmin,
+    enquirylist
 }

@@ -21,6 +21,8 @@ router.post('/express/doctor/timeset/:dr_name',logicpath.doctorTimeupdateapi)
 router.post('/express/opbooking/:dr_name',logicpath.OpbooksApi)
 router.get('/express/Allappointment/:dr_name',logicpath.allAppointment)
 
-
+// ******* admin ****************
+router.post('/express/countatus',logicpath.countatusAdmin)
+router.get('/express/user/enquiry/list',logicpath.enquirylist)
 
 module.exports=router
